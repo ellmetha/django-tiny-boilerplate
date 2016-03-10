@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'css/App2.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block header %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center"><img src="{% static 'img/logo.png' %}" alt="" /></div>
+      <div class="text-center">
+        <a href="{% url 'app2:home' %}" class="btn btn-primary">{% trans "Home" %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock header %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="{% static 'js/App2.js' %}"></script>
+{% endblock js %}

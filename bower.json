@@ -1,0 +1,23 @@
+{
+  "name": "django-tiny-boilerplate",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Morgan Aubert <morgan.aubert@zoho.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ellmetha/django-tiny-boilerplate",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/static/_bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "jquery": "^2.2.1"
+  }
+}
