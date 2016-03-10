@@ -1,10 +1,7 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import gulp from 'gulp';
-import babel from 'gulp-babel';
-import concat from 'gulp-concat';
 import sass from 'gulp-sass';
 import uglify from 'gulp-uglify';
-import gutil from 'gulp-util';
 import named from 'vinyl-named';
 import webpack from 'webpack-stream';
 
@@ -31,7 +28,7 @@ gulp.task('build-css-applications', function () {
         filename: '[name].css',
       },
       resolve: {
-        modulesDirectories: ['_bower_components'],
+        modulesDirectories: [bower_dir],
         extensions: ['', 'scss'],
       },
       module: {
@@ -57,7 +54,7 @@ gulp.task('build-js-applications', function() {
         filename: '[name].js',
       },
       resolve: {
-        modulesDirectories: ['node_modules', '_bower_components'],
+        modulesDirectories: ['node_modules', bower_dir],
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json'],
       },
       module: {
