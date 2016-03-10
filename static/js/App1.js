@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 
-// Forces the evalueation of jQuery and Twitter Bootstrap code in the global context
+// Forces the evaluation of jQuery and Twitter Bootstrap code in the global context
 import '!!script!jquery/dist/jquery.min';
 import '!!script!bootstrap-sass/assets/javascripts/bootstrap.min';
 
