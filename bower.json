@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
-    "jquery": "^2.2.1"
+    "jquery": "^2.2.1",
+    "scrollreveal": "^3.1.1"
   }
 }
