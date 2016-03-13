@@ -17,3 +17,5 @@ public/static/*
 !public/static/.gitkeep
 
 secrets.json
+
+static/build_dev

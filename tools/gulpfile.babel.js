@@ -2,14 +2,16 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import gulp from 'gulp';
 import sass from 'gulp-sass';
 import uglify from 'gulp-uglify';
+import gutil from 'gulp-util';
 import named from 'vinyl-named';
 import webpack from 'webpack-stream';
 
 /* Global variables */
 var static_dir = '../static/';
+const PROD_ENV = gutil.env.production;
 
 /* DIRS */
-var build_dir = static_dir + 'build';
+var build_dir = PROD_ENV ? static_dir + 'build' : static_dir + 'build_dev';
 var bower_dir = static_dir + '_bower_components';
 var sass_dir = static_dir + 'scss';
 var js_dir = static_dir + 'js';
@@ -40,7 +42,14 @@ gulp.task('build-css-applications', function () {
           { test: /\.(eot|ttf|wav|mp3)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }
         ],
       },
-      plugins: [ extractCSS ]
+      plugins: [
+        extractCSS,
+        ...(PROD_ENV ? [
+          new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false }
+          })
+        ] : []),
+      ],
     }))
     .pipe(gulp.dest(build_dir + '/css'));
 });
@@ -62,7 +71,17 @@ gulp.task('build-js-applications', function() {
           { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }
         ],
       },
+      plugins: [
+        ...(PROD_ENV ? [
+          new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false }
+          })
+        ] : []),
+      ],
     }))
     // .pipe(uglify())
     .pipe(gulp.dest(build_dir + '/js'));
 });
+
+/* Global task. */
+gulp.task('build', ['build-css-applications', 'build-js-applications', ]);
