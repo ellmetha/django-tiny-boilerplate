@@ -4,7 +4,9 @@
 
 {% block css %}
   {{ block.super }}
+  {% if not WEBPACK_DEV_SERVER_URL %}
   <link href="{% static 'css/App1.css' %}" rel="stylesheet" />
+  {% endif %}
 {% endblock css %}
 
 {% block header %}
@@ -36,5 +38,5 @@
 
 {% block js %}
   {{ block.super }}
-  <script src="{% static 'js/App1.js' %}"></script>
+  <script src="{{ WEBPACK_DEV_SERVER_URL|default:'' }}{% static 'js/App1.js' %}"></script>
 {% endblock js %}
