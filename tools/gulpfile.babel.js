@@ -66,17 +66,6 @@ var webpackConfig = {
 
 
 /*
- * Global tasks
- * ~~~~~~~~~~~~
- */
-
-gulp.task('build', [
-  'build-webpack-assets',
-  // Add other tasks here if necessary
-]);
-
-
-/*
  * Webpack task
  * ~~~~~~~~~~~~
  */
@@ -91,6 +80,17 @@ gulp.task('build-webpack-assets', function () {
     .pipe(webpackStream(webpackConfig))
     .pipe(gulp.dest(build_dir));
 });
+
+
+/*
+ * Global tasks
+ * ~~~~~~~~~~~~
+ */
+
+gulp.task('build', [
+  'build-webpack-assets',
+  // Add other tasks here if necessary
+]);
 
 
 /*
